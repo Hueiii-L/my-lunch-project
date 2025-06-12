@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Lunchtime</title>
+    <style>
+    /* === 全域樣式 === */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        color: #498c7f;
+        text-align: center;
+        margin: 0;
+        padding: 20px 0;
+    }
+    
+    header {
+        margin-bottom: 20px;
+    }
+
+    /* === 置物櫃大容器的樣式 === */
+    .locker-cabinet {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-flow: dense;
+        gap: 20px; 
+        width: 90%; 
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* === 單一置物櫃的樣式 === */
+    .locker {
+        aspect-ratio: 1 / 1; 
+        position: relative;
+        perspective: 1200px;
+        background-image: url('images/locker-open-bg.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #f0f0f0;
+        z-index: 1;
+        transition: transform 0.3s ease;
+    }
+    
+    /* === 大尺寸置物櫃的樣式 === */
+    .locker-large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    /* === 櫃門的樣式 === */
+    .locker-door {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url('images/locker-door-closed.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.6s;
+        transform-origin: left;
+        cursor: pointer;
+        z-index: 10; 
+    }
+
+    /* === 櫃子裡的內容 === */
+    .locker-content {
+        width: 100%;
+        height: 100%;
+        padding: 15px 25px;
+        box-sizing: border-box;
+        overflow: hidden; 
+        position: relative;
+    }
+
+    /* === 動畫效果 === */
+    .locker:hover {
+        z-index: 20;
+        transform: scale(1.05);
+    }
+    .locker:hover .locker-door {
+        transform: rotateY(-110deg);
+    }
+
+    /* === 工具箱樣式 (非常重要) === */
+    /* 讓連結沒有底線，顏色正常，且填滿整個區域 */
+    .locker a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    /* 讓內容物垂直+水平置中 */
+    .content-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lunchtime</h1>
+        <p>叮叮叮!鐘響了，現在是午餐時間，吉比在人群中擠來擠去，他餓死了!
+        開開關關每一個置物櫃，就是沒看見，你沒有點點看，怎麼知道裡面真的有好吃的，誰說飯裡不可能有臭抹布>:(</p>
+    </header>
+
+    <audio id="openSound" src="audio/locker-open-sound.mp3" preload="auto"></audio>
+
+    <div class="locker-cabinet">
+
+        <!-- ▼ 櫃子 1 (大) ▼ -->
+        <div class="locker locker-large">
+            <div class="locker-door"></div>
+            <a href="https://amychen930116.wixsite.com/sushisun?rc=test-site" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/earth.png" alt="櫃子1的內容描述" style="max-width: 75%; max-height: 75%;">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 2 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://youtu.be/Tmcy9btzgPI" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/David.png" alt="櫃子2的內容描述" style="max-width: 80%; max-height: 80%; transform: rotate(-8deg)">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 3 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://youtu.be/4LyfEVinllg" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/咻.png" alt="櫃子3的內容描述" style="max-width: 90%; max-height: 90%;">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 4 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://youtu.be/bIFQBqd4MJI" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/Jay.png" alt="櫃子4的內容描述" style="max-width: 75%; max-height: 75%; transform: rotate(10deg)">
+                </div>
+            </a>
+        </div>
+        
+        <!-- ▼ 櫃子 5 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://maps.app.goo.gl/VrRS9MjP1aGyWaXS9" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/yum.png" alt="櫃子5的內容描述" style="max-width: 100%; max-height: 100%; transform: rotate(10deg)">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 6 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://youtube.com/shorts/7WcN-3u2aEQ?feature=share" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/poo.png" alt="櫃子6的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 7 (大) ▼ -->
+        <div class="locker locker-large">
+            <div class="locker-door"></div>
+            <a href="https://youtu.be/qE0Eo2NKLGA" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/mask.png" alt="櫃子7的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 8 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://youtu.be/WoDMTrl1FG0" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/Beep.png" alt="櫃子8的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 9 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://drive.google.com/file/d/14qpceaZT67mIJ4IcTQoSzsWj_C7eBtu4/view?usp=sharing" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/Ball.png" alt="櫃子9的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 10 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://youtu.be/m6JfqwjoQ5o" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/HoLe.png" alt="櫃子10的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+
+         <!-- ▼ 櫃子 11 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://drive.google.com/file/d/1G55d-VVYC4o0NR55r0R-0SaYJNTqKrxO/view?usp=sharing" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/manga.png" alt="櫃子11的內容描述" style="max-width: 70%; max-height: 70%; transform: rotate(-10deg)">
+                </div>
+            </a>
+        </div>
+
+         <!-- ▼ 櫃子 11 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://youtu.be/Se7ImejSuAI?si=vyBeiwjwu0Fh7AYd" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/mumu.png" alt="櫃子11的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+
+         <!-- ▼ 櫃子 11 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="https://akaswap.com/akaobj/25278" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/yummy.png" alt="櫃子11的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+
+        <!-- ▼ 櫃子 11 ▼ -->
+        <div class="locker">
+            <div class="locker-door"></div>
+            <a href="images/筍絲_大圖.png" target="_blank">
+                <div class="locker-content content-center">
+                    <img src="images/筍絲.png" alt="櫃子11的內容描述" style="max-width: 80%; max-height: 80%;">
+                </div>
+            </a>
+        </div>
+        
+    </div>
+
+    <script>
+        // JavaScript 保持不變，負責播放音效
+        document.addEventListener('DOMContentLoaded', function() {
+            const lockers = document.querySelectorAll('.locker');
+            const sound = document.getElementById('openSound');
+            lockers.forEach(function(locker) {
+                locker.addEventListener('mouseenter', function() {
+                    sound.currentTime = 0; 
+                    sound.play();
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
